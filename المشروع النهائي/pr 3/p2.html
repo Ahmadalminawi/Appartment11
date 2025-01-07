@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة التسجيل</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJ3Qp7pD2Z2K5oS0kd8wP5kM9VjY4M9V7g2m9By8hFqZ7WgqQ9Hn2fQf0aJ0" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('opp.png');
+            background-size: 100% 100%;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 900px;
+            padding: 20px;
+            border: 2px solid #ccc;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .signup-title {
+            font-size: 1.8rem;
+            color: #2d3e50;
+            margin-bottom: 10px;
+        }
+
+        .signup-description {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 8px;
+            font-size: 0.9rem;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+
+        .signup-button {
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            color: white;
+            padding: 10px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            width: 100%;
+        }
+
+        .signup-button:hover {
+            transform: scale(1.05);
+        }
+
+        .card-section {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #2d3e50;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ff7e5f;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .form-group-horizontal {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .form-group-horizontal .form-group {
+            width: 48%;
+        }
+
+        .extra-fields {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-container">
+        <h1 class="signup-title">التسجيل</h1>
+        <p class="signup-description">قم بإنشاء حساب جديد للبدء في استخدام الموقع.</p>
+
+        <form class="signup-form" id="signupForm" onsubmit="return validateForm()">
+            <div class="card-section">
+                <div class="section-title">نوع الحساب</div>
+                <div class="form-group">
+                    <label for="accountType">نوع الحساب</label>
+                    <select id="accountType" name="accountType" required>
+                        <option value="" disabled selected>اختر نوع الحساب</option>
+                        <option value="owner">مؤجر</option>
+                        <option value="tenant">مستأجر</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="card-section">
+                <div class="section-title">معلومات أساسية</div>
+                <div class="form-group-horizontal">
+                    <div class="form-group">
+                        <label for="fullName">الاسم الكامل</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">البريد الإلكتروني</label>
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">رقم الهاتف</label>
+                    <div class="d-flex">
+                        <select id="countryCode" name="countryCode" required class="form-control">
+                            <option value="+962">الأردن (+962)</option>
+                            <option value="+966">السعودية (+966)</option>
+                            <option value="+971">الإمارات (+971)</option>
+                            <option value="+968">عُمان (+968)</option>
+                            <option value="+964">العراق (+964)</option>
+                            <option value="+970">فلسطين (+970)</option>
+                            <option value="+965">الكويت (+965)</option>
+                            <option value="+974">قطر (+974)</option>
+                            <option value="+966">البحرين (+966)</option>
+                            <option value="+218">ليبيا (+218)</option>
+                            <option value="+249">السودان (+249)</option>
+                            <option value="+966">مصر (+20)</option>
+                        </select>
+                        <input type="tel" id="phone" name="phone" placeholder="مثال: +966501234567" required pattern="\+\d{1,3}\d{9,}" title="يجب إدخال رقم صالح يبدأ برمز الدولة ويتكون من 9 أرقام على الأقل.">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">كلمة المرور</label>
+                    <input type="password" id="password" name="password" placeholder="أدخل كلمة المرور" required pattern="^(?![0-9])([A-Za-z0-9]{8,})$" title="يجب أن تحتوي كلمة المرور على 8 خانات على الأقل ولا تبدأ برقم.">
+                </div>
+
+                <div class="form-group">
+                    <label for="confirmPassword">تأكيد كلمة المرور</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="تأكيد كلمة المرور" required>
+                </div>
+            </div>
+
+            <!-- Owner fields -->
+            <div id="ownerFields" class="card-section extra-fields">
+                <div class="section-title">معلومات المؤجر</div>
+                <div class="form-group-horizontal">
+                    <div class="form-group">
+                        <label for="propertyAddress">عنوان العقار أو المدينة</label>
+                        <input type="text" id="propertyAddress" name="propertyAddress" placeholder="أدخل عنوان العقار أو المدينة" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apartmentsCount">عدد الشقق</label>
+                        <input type="number" id="apartmentsCount" name="apartmentsCount" placeholder="أدخل عدد الشقق" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nationalId">رقم الهوية أو جواز السفر</label>
+                    <input type="text" id="nationalId" name="nationalId" placeholder="أدخل رقم الهوية أو جواز السفر" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ownerPhoto">صورة شخصية</label>
+                    <input type="file" id="ownerPhoto" name="ownerPhoto" required>
+                </div>
+            </div>
+
+            <!-- Tenant fields -->
+            <div id="tenantFields" class="card-section extra-fields">
+                <div class="section-title">معلومات المستأجر</div>
+                <div class="form-group-horizontal">
+                    <div class="form-group">
+                        <label for="fullNameTenant">الاسم الرباعي</label>
+                        <input type="text" id="fullNameTenant" name="fullNameTenant" placeholder="أدخل اسمك الرباعي" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">العمر</label>
+                        <input type="number" id="age" name="age" placeholder="أدخل عمرك" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="maritalStatus">الحالة الاجتماعية</label>
+                    <select id="maritalStatus" name="maritalStatus" required>
+                        <option value="single">أعزب</option>
+                        <option value="married">متزوج</option>
+                        <option value="other">غير ذلك</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="tenantPhoto">صورة شخصية</label>
+                    <input type="file" id="tenantPhoto" name="tenantPhoto" required>
+                </div>
+
+                <!-- New Field for ID or Passport -->
+                <div class="form-group">
+                    <label for="tenantIdPhoto">صورة الهوية الشخصية أو جواز السفر</label>
+                    <input type="file" id="tenantIdPhoto" name="tenantIdPhoto" required>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit" class="signup-button">إنشاء الحساب</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('accountType').addEventListener('change', function() {
+            var accountType = this.value;
+            var ownerFields = document.getElementById('ownerFields');
+            var tenantFields = document.getElementById('tenantFields');
+
+            if (accountType === 'owner') {
+                ownerFields.style.display = 'block';
+                tenantFields.style.display = 'none';
+            } else if (accountType === 'tenant') {
+                tenantFields.style.display = 'block';
+                ownerFields.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var accountType = document.getElementById('accountType').value;
+            var ownerFields = document.getElementById('ownerFields');
+            var tenantFields = document.getElementById('tenantFields');
+
+            if (accountType === 'owner') {
+                ownerFields.style.display = 'block';
+                tenantFields.style.display = 'none';
+            } else if (accountType === 'tenant') {
+                tenantFields.style.display = 'block';
+                ownerFields.style.display = 'none';
+            }
+        });
+
+        function validateForm() {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            if (password !== confirmPassword) {
+                alert("كلمة المرور وتأكيد كلمة المرور غير متطابقين.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
